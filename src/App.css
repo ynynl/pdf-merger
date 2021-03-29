@@ -1,5 +1,22 @@
 .App {
   text-align: center;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  height: 100vh;
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+}
+
+.row {
+  height: 100%;
+  -webkit-flex-direction: row;
+  flex-direction: row;
 }
 
 .App-logo {
@@ -28,11 +45,5 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.input {
 }

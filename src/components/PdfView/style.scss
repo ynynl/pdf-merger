@@ -1,0 +1,36 @@
+/* card style start */
+
+.doc {
+    .pages {
+        background: #cccaca;
+        overflow-y: auto;
+    }
+
+    .scrollbar {
+        background: #fff;
+        height: 100%;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .page-card {
+        padding: 5px;
+        margin: 10px;
+        border-radius: 4px;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+        // transition: 0.3s;
+    }
+}
+
+.handle {
+    -webkit-transition: background-color 1s;
+    transition: background-color 0.5s;
+}
+
+.handle:hover {
+    background-color: #ffc75e96
+}
+
+.selected  {
+        background: #ffc75e96;
+}
