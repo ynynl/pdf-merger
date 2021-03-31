@@ -1,6 +1,6 @@
 import * as pdfjsLib from 'pdfjs-dist';
 pdfjsLib.GlobalWorkerOptions.workerSrc =
-  "//cdnjs.cloudflare.com/ajax/libs/pdf.js/2.2.228/pdf.worker.js";
+  `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.js`;
 
 /**
  * @param  {Object} page
@@ -26,7 +26,8 @@ const makeThumbnail = (page, size) => {
     })
     .promise.then(function () {
       return canvas.toDataURL();
-    });
+    })
+    .catch(error => console.error(error));
 };
 
 /**
@@ -35,24 +36,31 @@ const makeThumbnail = (page, size) => {
  * @return {Array}
  */
 export const generatePdfThumbnails = async (source, size) => {
-  const pdfDocument = await pdfjsLib.getDocument({
-    url: source,
-  }).promise;
 
-  const pages = [];
-  while (pages.length < pdfDocument.numPages) pages.push(pages.length + 1);
+  try {
+    const pdfDocument = await pdfjsLib.getDocument({ url: source, }).promise
 
-  return Promise.all(
-    pages.map((num) =>
-      pdfDocument
-        .getPage(num)
-        .then((page) => makeThumbnail(page, size))
-        .then((thumbnail) => ({
-          page: num,
-          thumbnail,
-        }))
-    )
-  );
-};
+    console.log('PDF loaded');
+
+    const pageNum = Array.from({ length: pdfDocument.numPages }, (x, i) => i + 1);
+
+    return Promise.all(
+      pageNum.map((num) =>
+        pdfDocument
+          .getPage(num)
+          .then((page) => makeThumbnail(page, size))
+          .then((thumbnail) => ({
+            page: num,
+            thumbnail,
+          }))
+      )
+    );
+
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+
 
 export default generatePdfThumbnails;

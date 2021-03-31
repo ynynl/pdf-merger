@@ -1,70 +1,68 @@
 import './App.css';
 import React, { useState, useEffect } from 'react';
-import FileInput from './components/FileInput'
+import FileInput from './components/FileInput/index'
 import PdfView from './components/PdfView/index';
 import { PDFDocument } from 'pdf-lib'
 import download from 'downloadjs'
-import generatePdfThumbnails from './utils/pdf-thumbnails-generator';
+import generatePdfThumbnails from './helper/pdf-thumbnails-generator';
 // import generatePdfThumbnails from 'pdf-thumbnails-generator';
 
 function App() {
-  const [file, setFile] = useState([]);
-  // const [srcPdfDoc, setSrcPdfDoc] = useState('')
+  const [pdfList, setPdfList] = useState([]);
   const [srcPdfDoc, setSrcPdfDoc] = useState([])
 
-  const [pdfDoc, setPdfDoc] = useState()
+  console.log('pdfList', pdfList);
 
-  console.log('file', file);
-  useEffect(() => {
-    const init = async () => {
-      setPdfDoc(await PDFDocument.create())
-    }
-    init()
-  }, [])
-
-  const generateThumbnails = async (pdf_source) => {
+  console.log('srcPdfDoc', srcPdfDoc);
+  const handlefile = async (files) => {
     try {
-      const thumbnails = await generatePdfThumbnails(pdf_source, 600);
-      console.log(thumbnails);
-      setFile(thumbnails)
-      // return thumbnails
-    } catch (err) {
-      console.error(err);
-    }
-  }
+      const thumbnailTasks = []
+      const sourceFileTasks = []
 
-  const handlefile = async (e) => {
-    // setFile(e.target.files[0])
-    if (e.target.files[0]) {
-      try {
-        const doc = await readFileDataAsBase64(e)
-        setSrcPdfDoc(await PDFDocument.load(doc))
-        generateThumbnails(doc)
-      } catch (err) {
-        console.error(err);
+      for (let i = 0; i < files.length; i++) {
+        const file = files[i]
+        const doc = await readFileDataAsBase64(file)
+        sourceFileTasks.push(
+          PDFDocument.load(doc)
+        )
+        thumbnailTasks.push(
+          generatePdfThumbnails(doc, 600)
+        )
       }
-    } else {
-      setSrcPdfDoc(null)
+
+      const srcFiles = await Promise.all(sourceFileTasks)
+      const thumbnailsList = await Promise.all(thumbnailTasks)
+
+      console.log('srcFile', srcFiles);
+      console.log('ThumbnailList', thumbnailsList);
+
+      setSrcPdfDoc(srcPdfDoc.concat(srcFiles))
+      setPdfList(pdfList.concat(thumbnailsList))
+    } catch (error) {
+      console.log(error);
     }
   }
-
-
 
   const savePages = async (pages) => {
-    const pageList = pages.map(p => p.page - 1)
-    const srcPages = await pdfDoc.copyPages(srcPdfDoc, pageList)
-    console.log(pageList);
-    for (let i = 0; i < pageList.length; i++) {
-      pdfDoc.addPage(srcPages[i])
+    console.log('save', pages);
+
+    const pdfDoc = await PDFDocument.create()
+    console.log(pdfDoc);
+
+    for (let i = 0; i < pages.length; i++) {
+      const p = pages[i]
+      console.log(p);
+      const [srcPage] = await pdfDoc.copyPages(srcPdfDoc[p.from], [p.page])
+      pdfDoc.addPage(srcPage)
     }
+
     const pdfBytes = await pdfDoc.save()
     // Trigger the browser to download the PDF document
     download(pdfBytes, "pdf-lib_page_copying_example.pdf", "application/pdf");
-    setPdfDoc(await PDFDocument.create())
   }
+
   // https://stackoverflow.com/questions/56001073/how-to-get-byte-array-from-a-file-in-reactjs
-  function readFileDataAsBase64(e) {
-    const file = e.target.files[0];
+  function readFileDataAsBase64(file) {
 
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
@@ -83,14 +81,11 @@ function App() {
 
   return (
     <div className='App'>
-      <div className='row'>
-
-        <PdfView className='view' list={file} setList={setFile} savePages={savePages} />
-      </div>
-      <div className='row'>
-      <button onClick={() => savePages(file)}>save</button>
-      <FileInput className='input' handlefile={handlefile} />
-      </div>
+      {pdfList.map((f, i) =>
+        <PdfView className='row' key={i} fileIdx={i} file={f} savePages={savePages} />
+      )
+      }
+      <FileInput className='row' handlefile={handlefile} />
     </div>
   );
 }

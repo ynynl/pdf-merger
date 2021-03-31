@@ -1,36 +1,42 @@
 /* card style start */
 
 .doc {
+    border-right: #dfdcdc solid 1px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+    }
+
+.doc {
     .pages {
+        padding: {
+            top: 30px;
+        }
+        width: 100%;
+        overflow-y: auto;
+        scrollbar-width: thin;
         background: #cccaca;
-        overflow-y: auto;
     }
 
-    .scrollbar {
-        background: #fff;
-        height: 100%;
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
-    }
-
-    .page-card {
-        padding: 5px;
-        margin: 10px;
-        border-radius: 4px;
-        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
-        // transition: 0.3s;
+    .grid-container {
+        display: grid;
+        width: 100%;
+        grid-template-columns: repeat(auto-fill, minmax(9em, 1fr));
+        grid-gap: 1px;
     }
 }
 
 .handle {
-    -webkit-transition: background-color 1s;
+    -webkit-transition: background-color 0.5s;
     transition: background-color 0.5s;
 }
 
 .handle:hover {
-    background-color: #ffc75e96
+    background-color: #ffc75e96;
 }
 
-.selected  {
-        background: #ffc75e96;
+.handle:active {
+    background-color: #ffc75e96;
+}
+
+.selected {
+    background: #ffc75e96;
 }
