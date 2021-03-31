@@ -28,7 +28,7 @@ export default function FileInput({ handlefile }) {
     timeoutId.current = setTimeout(reset, 4000);
   }
   return (
-    <>
+    <div className='container'>
       <Topbar></Topbar>
       <div className='input'>
         <FileUploader
@@ -45,6 +45,6 @@ export default function FileInput({ handlefile }) {
           }
         />
       </div>
-    </>
+    </div>
   );
 }

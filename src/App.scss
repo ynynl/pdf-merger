@@ -11,6 +11,13 @@
   display: -moz-flex;
   display: -webkit-flex;
   display: flex;
+
+  background-color: lightgray;
+
+  .button {
+    position: absolute;
+    bottom: 0
+  }
 }
 
 .row {
@@ -19,3 +26,5 @@
   -webkit-flex-direction: row;
   flex-direction: row;
 }
+
+
