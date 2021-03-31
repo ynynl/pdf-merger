@@ -29,20 +29,22 @@ export default function FileInput({ handlefile }) {
   }
   return (
     <>
-    <Topbar></Topbar>
-    <FileUploader
-      multiple
-      accept='application/pdf'
-      onCancel={reset}
-      onDrop={(acceptedFiles, rejectedFiles) => {
-        // handle file upload...
-        // startProgress();
-        handlefile(acceptedFiles)
-      }}
-      progressMessage={
-        isUploading ? `Uploading... hang tight.` : ''
-      }
-    />
+      <Topbar></Topbar>
+      <div className='input'>
+        <FileUploader
+          multiple
+          accept='application/pdf'
+          onCancel={reset}
+          onDrop={(acceptedFiles, rejectedFiles) => {
+            // handle file upload...
+            // startProgress();
+            handlefile(acceptedFiles)
+          }}
+          progressMessage={
+            isUploading ? `Uploading... hang tight.` : ''
+          }
+        />
+      </div>
     </>
   );
 }
