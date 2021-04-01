@@ -13,7 +13,7 @@
       "sizes": "192x192"
     }
   ],
-  "start_url": "/",
+  "start_url": ".",
   "display": "standalone",
   "theme_color": "#ffc75e",
   "background_color": "#lightgray"
