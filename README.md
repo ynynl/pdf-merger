@@ -6,4 +6,4 @@ Inspired by MacOS Preview
 ## Feature
 
 * Arrange by DropNDrop
-* No sever. No uploading. Only work on your browser.
+* No sever. No upload. Only work on your browser.
