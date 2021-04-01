@@ -12,6 +12,8 @@ function App() {
   const [pdfList, setPdfList] = useState([]);
   const [srcPdfDoc, setSrcPdfDoc] = useState([])
   const [workingList, setWorkingList] = useState([])
+  const [isLoading, setIsLoading] = useState(false)
+  const [isSaving, setIsSaving] = useState(false)
 
   useEffect(() => {
     const initSave = pdfList.map((pages, i) => (i > workingList.length - 1)
@@ -36,6 +38,7 @@ function App() {
   }
 
   const handlefile = async (files) => {
+    setIsLoading(true)
     try {
       const thumbnailTasks = []
       const sourceFileTasks = []
@@ -56,13 +59,15 @@ function App() {
 
       setSrcPdfDoc(srcPdfDoc.concat(srcFiles))
       setPdfList(pdfList.concat(thumbnailsList))
+      setIsLoading(false)
     } catch (error) {
       console.log(error);
+      setIsLoading(false)
     }
   }
 
   const handleSave = async () => {
-
+    setIsSaving(true)
     const pdfDoc = await PDFDocument.create()
     // console.log(pdfDoc);
 
@@ -79,6 +84,7 @@ function App() {
     }
     const pdfBytes = await pdfDoc.save()
     download(pdfBytes, "mergedPDF.pdf", "application/pdf");
+    setIsSaving(false)
   }
 
   function readFileDataAsBase64(file) {
@@ -112,7 +118,7 @@ function App() {
         />
       })}
 
-      <Right className='row' handlefile={handlefile} handleSave={handleSave} loaded={!!workingList.length} />
+      <Right className='row' handlefile={handlefile} handleSave={handleSave} loaded={!!workingList.length} isLoading={isLoading} isSaving={isSaving} />
 
     </div>
   );

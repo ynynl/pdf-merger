@@ -4,7 +4,7 @@ import * as React from 'react';
 import { FileUploader } from 'baseui/file-uploader';
 
 
-export default function FileInput({ handlefile }) {
+export default function FileInput({ handlefile, processing }) {
     const [isUploading, setIsUploading] = React.useState(false);
     const timeoutId = React.useRef(null);
     function reset() {
@@ -32,7 +32,7 @@ export default function FileInput({ handlefile }) {
                         handlefile(acceptedFiles)
                     }}
                     progressMessage={
-                        isUploading ? `Uploading... hang tight.` : ''
+                        processing ? `Loading... hang tight.` : ''
                     }
                 />
             </div>
