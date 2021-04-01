@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from 'react';
 import { ReactSortable } from "react-sortablejs";
 import { Sortable, MultiDrag } from "sortablejs"
-// import { GridList, GridListTile, Paper } from '@material-ui/core';
 // https://www.npmjs.com/package/re-resizable#props
 import { Resizable } from "re-resizable";
 import './style.scss'
@@ -18,8 +17,6 @@ import {
 
 Sortable.mount(new MultiDrag());
 
-// var _ = require('lodash');
-
 const PdfView = ({ file, fileId, updateList, updateCheck }) => {
   const [list, setList] = useState([])
   const [checked, setChecked] = useState(true);
@@ -33,14 +30,7 @@ const PdfView = ({ file, fileId, updateList, updateCheck }) => {
       }
     })
     setList(initList)
-
-
   }, [file, fileId])
-
-
-  const style = {
-    display: "flex",
-  };
 
   const handleCheck = (e) => {
     setChecked(e.target.checked)
@@ -55,13 +45,12 @@ const PdfView = ({ file, fileId, updateList, updateCheck }) => {
     const updatedList = list.filter(l => l.id !== id)
     setList(updatedList)
     updateList({ id: fileId, pages: updatedList.map(l => { return { from: l.file, page: l.page - 1 } }), checked: checked }, fileId)
-
   }
 
   return (
     <div className='doc'>
       <Resizable
-        style={style}
+        style={{ display: "flex" }}
         defaultSize={{ width: '200', height: '100vh' }}
         maxWidth='600'
         minWidth='150'
@@ -69,11 +58,13 @@ const PdfView = ({ file, fileId, updateList, updateCheck }) => {
         enable={{ top: false, right: true, bottom: false, left: false, topRight: false, bottomRight: false, bottomLeft: false, topLeft: false }}
       >
         <Topbar>
-          <Checkbox
-            checked={checked}
-            onChange={handleCheck}
-            labelPlacement={LABEL_PLACEMENT.right}
-          />
+          <div className='checkbox'>
+            <Checkbox
+              checked={checked}
+              onChange={handleCheck}
+              labelPlacement={LABEL_PLACEMENT.right}
+            />
+          </div>
         </Topbar>
 
         <div className='pages'>

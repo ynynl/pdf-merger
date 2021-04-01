@@ -5,7 +5,7 @@ import * as React from 'react';
 
 import FileInput from "../FileInput";
 import { Button } from "baseui/button";
-import { H1, H2, H3, H4, H5, H6 } from 'baseui/typography';
+import {H3} from 'baseui/typography';
 
 import githubIcon from '../../GitHub-Mark-64px.png'
 
@@ -15,24 +15,27 @@ export default function Right({ handlefile, handleSave, loaded, isLoading, isSav
   // if there is no progress info available.
   return (
     <div className='container'>
-      <Topbar></Topbar>
-      <div className='input'>
+      {/* <Topbar></Topbar> */}
+      <div className='content'>
 
-        <H5>
-          Arrange & Combine PDF (severless)
-        </H5>
+        <H3>
+          Severless PDF Arrange & Combine
+        </H3>
 
         <a href='https://github.com/ynynl/severless-pdf-merge'>
           <img src={githubIcon}></img>
         </a>
 
-        <div>
-          <FileInput handlefile={handlefile} processing={isLoading}/>
-          {/* <Controller /> */}
-        </div>
+        <FileInput handlefile={handlefile} processing={isLoading} />
+        {/* <Controller /> */}
         {loaded &&
           <div className='button'>
-            <Button onClick={handleSave} isLoading={isSaving}>Combine and Save {pageCount} Pages</Button>
+            <Button
+              onClick={handleSave}
+              isLoading={isSaving}
+            >
+              Combine and Save {pageCount} Pages
+              </Button>
           </div>
         }
       </div>

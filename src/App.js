@@ -4,7 +4,7 @@ import PdfView from './components/PdfView/index';
 import { PDFDocument } from 'pdf-lib'
 import download from 'downloadjs'
 import generatePdfThumbnails from './helper/pdf-thumbnails-generator';
-import Right from './components/Right/index';
+import Right from './components/Main/index';
 
 
 
@@ -23,7 +23,7 @@ function App() {
   }, [pdfList])
 
   const pageCount = workingList.reduce((sum, curr) => (curr.checked) ? sum + curr.pages.length : sum, 0)
-  // const docCount = workingList.reduce((sum, curr) => (curr.checked && curr.page.length) ? sum + 1 : sum)
+  // const docCount = workingList.reduce((sum, curr) => (curr.checked && curr.page.length) ? sum + 1 : sum, 0)
 
   /**
    * 
@@ -72,7 +72,6 @@ function App() {
   const handleSave = async () => {
     setIsSaving(true)
     const pdfDoc = await PDFDocument.create()
-    // console.log(pdfDoc);
 
     for (let i = 0; i < workingList.length; i++) {
       if (workingList[i].checked) {
@@ -91,18 +90,14 @@ function App() {
   }
 
   function readFileDataAsBase64(file) {
-
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
-
       reader.onload = (event) => {
         resolve(event.target.result);
       };
-
       reader.onerror = (err) => {
         reject(err);
       };
-
       reader.readAsDataURL(file);
     });
   }
