@@ -8,3 +8,21 @@
 .grid-item {
     place-self: center;
 }
+
+.delete {
+    position: relative;
+
+    svg {
+        right: -9px;
+        top: -9px;
+        position: absolute;
+    }
+
+    .show {
+        display: block;
+    }
+
+    .hide {
+        display: none;
+    }
+}

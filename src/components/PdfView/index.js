@@ -15,24 +15,14 @@ import {
   Checkbox,
   LABEL_PLACEMENT
 } from "baseui/checkbox";
-import { update } from 'lodash';
-
 
 Sortable.mount(new MultiDrag());
 
 // var _ = require('lodash');
 
-const PdfView = ({ file, savePages, fileId, toSave, workingList, updateList, createList, updateCheck }) => {
-  // const [numPages, setNumPages] = useState(null);
-  // eslint-disable-next-line
-  // const [pageNumber, setPageNumber] = useState(1);
+const PdfView = ({ file, fileId, updateList, updateCheck }) => {
   const [list, setList] = useState([])
   const [checked, setChecked] = useState(true);
-
-  // const [width, setWidth] = useState(200)
-
-  // pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
-
 
   useEffect(() => {
     const initList = file.map(f => {
@@ -47,26 +37,25 @@ const PdfView = ({ file, savePages, fileId, toSave, workingList, updateList, cre
 
   }, [file, fileId])
 
-  // useEffect(() => {
-  //   toSave(checked, { id: fileId, pages: list.map(l => { return { from: l.file, page: l.page - 1 } }) })
-  // }, [list, fileId])
 
   const style = {
     display: "flex",
   };
 
-  // console.log(fileId);
-  // console.log('list', list);
-
   const handleCheck = (e) => {
     setChecked(e.target.checked)
     updateCheck(fileId)
-    // toSave(e.target.checked, { id: fileId, pages: list.map(l => { return { from: l.file, page: l.page - 1 } }) })
   }
 
   const handleUpdate = () => {
-    // toSave(checked, { id: fileId, pages: list.map(l => { return { from: l.file, page: l.page - 1 } }) })
     updateList({ id: fileId, pages: list.map(l => { return { from: l.file, page: l.page - 1 } }), checked: checked }, fileId)
+  }
+
+  const handleDelete = (id) => {
+    const updatedList = list.filter(l => l.id !== id)
+    setList(updatedList)
+    updateList({ id: fileId, pages: updatedList.map(l => { return { from: l.file, page: l.page - 1 } }), checked: checked }, fileId)
+
   }
 
   return (
@@ -80,7 +69,6 @@ const PdfView = ({ file, savePages, fileId, toSave, workingList, updateList, cre
         enable={{ top: false, right: true, bottom: false, left: false, topRight: false, bottomRight: false, bottomLeft: false, topLeft: false }}
       >
         <Topbar>
-          {/* <button onClick={() => savePages(list.map(l => { return { from: l.file, page: l.page - 1, id: fileId } }))}>save</button> */}
           <Checkbox
             checked={checked}
             onChange={handleCheck}
@@ -102,10 +90,14 @@ const PdfView = ({ file, savePages, fileId, toSave, workingList, updateList, cre
             swapThreshold={0.5}
             className='grid-container'
             onSort={handleUpdate}
-          // onChoose={}
           >
             {list.map((item) => (
-              <Thumbnail key={item.id} imgsrc={item.thumbnail} />
+              <Thumbnail
+                key={item.id}
+                imgsrc={item.thumbnail}
+                pageId={item.id}
+                handleDelete={handleDelete}
+              />
             ))}
           </ReactSortable>
         </div>
@@ -113,20 +105,5 @@ const PdfView = ({ file, savePages, fileId, toSave, workingList, updateList, cre
     </div>
   )
 }
-
-
-
-// const CheckboxInput = () => {
-//   const [checked, setChecked] = React.useState(false);
-//   return (
-//     <Checkbox
-//       checked={checked}
-//       onChange={e => setChecked(e.target.checked)}
-//       labelPlacement={LABEL_PLACEMENT.right}
-//     />
-//   );
-// }
-
-
 
 export default PdfView

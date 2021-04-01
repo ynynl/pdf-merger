@@ -8,7 +8,7 @@
 .doc {
     .pages {
         padding: {
-            top: 30px;
+            top: 50px;
         }
         width: 100%;
         overflow-y: auto;
@@ -21,6 +21,7 @@
         width: 100%;
         grid-template-columns: repeat(auto-fill, minmax(9em, 1fr));
         grid-gap: 1px;
+        transition: 2s;
     }
 }
 
