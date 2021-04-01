@@ -1,0 +1,15 @@
+{
+    "short_name": "pdf_merger",
+    "name": "Severless PDF Merger",
+    "icons": [
+      {
+        "src": "favicon.ico",
+        "sizes": "192x192",
+        "type": "image/png"
+      }
+    ],
+    "start_url": "./index.html",
+    "display": "standalone",
+    "theme_color": "#ffc75e",
+    "background_color": "lightgray"
+  }
