@@ -2,10 +2,21 @@
     width: 100%;
     align-items: flex-end;
     background: lightgray;
-    
+    overflow-y: scroll;
+    min-width: min-content;
 }
 
 .content {
-    padding: 50px 50px 50px 50px  ;
+    padding: 1em  ;
+    padding-top : 4em  ;
+}
+
+.github {
+    position: relative;
+    a {
+        position: absolute;
+        right: 0;
+        margin: 1em;
+    }
 }
 

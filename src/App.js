@@ -4,7 +4,8 @@ import PdfView from './components/PdfView/index';
 import { PDFDocument } from 'pdf-lib'
 import download from 'downloadjs'
 import generatePdfThumbnails from './helper/pdf-thumbnails-generator';
-import Right from './components/Main/index';
+import readFileDataAsBase64 from './helper/read-file-as-base64'
+import Main from './components/Main/index';
 
 
 
@@ -89,19 +90,6 @@ function App() {
     setIsSaving(false)
   }
 
-  function readFileDataAsBase64(file) {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.onload = (event) => {
-        resolve(event.target.result);
-      };
-      reader.onerror = (err) => {
-        reject(err);
-      };
-      reader.readAsDataURL(file);
-    });
-  }
-
 
   return (
     <div className='App'>
@@ -116,7 +104,7 @@ function App() {
         />
       })}
 
-      <Right 
+      <Main 
       className='row' 
       handlefile={handlefile} 
       handleSave={handleSave} 

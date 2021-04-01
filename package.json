@@ -8,10 +8,16 @@
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.8.3",
     "baseui": "^9.110.0",
+    "downloadjs": "^1.4.7",
+    "node-sass": "^5.0.0",
+    "pdf-lib": "^1.16.0",
+    "re-resizable": "^6.9.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-pdf": "^5.2.0",
     "react-scripts": "4.0.3",
+    "react-sortablejs": "^6.0.0",
+    "sortablejs": "^1.13.0",
     "styletron-engine-atomic": "^1.4.7",
     "styletron-react": "^6.0.1",
     "web-vitals": "^1.1.1"
@@ -43,6 +49,7 @@
     ]
   },
   "devDependencies": {
+    "@types/sortablejs": "^1.10.6",
     "gh-pages": "^3.1.0"
   }
 }

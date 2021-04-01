@@ -53,7 +53,7 @@ const PdfView = ({ file, fileId, updateList, updateCheck }) => {
         style={{ display: "flex" }}
         defaultSize={{ width: '200', height: '100vh' }}
         maxWidth='600'
-        minWidth='150'
+        minWidth='160'
         handleClasses={{ right: 'handle' }}
         enable={{ top: false, right: true, bottom: false, left: false, topRight: false, bottomRight: false, bottomLeft: false, topLeft: false }}
       >
