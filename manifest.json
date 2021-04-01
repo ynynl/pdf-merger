@@ -13,7 +13,7 @@
       "sizes": "192x192"
     }
   ],
-  "start_url": "https://ynynl.github.io/severless-pdf-merge/",
+  "start_url": "/",
   "display": "standalone",
   "theme_color": "#ffc75e",
   "background_color": "#lightgray"
