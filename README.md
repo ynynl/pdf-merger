@@ -1,7 +1,7 @@
 [link](https://ynynl.github.io/severless-pdf-merge/)
 # Seveless PDF merge and arrange
 
-Inspire by MacOS Preview
+Inspired by MacOS Preview
 
 ## Feature
 
