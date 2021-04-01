@@ -5,5 +5,5 @@ Inspired by MacOS Preview
 
 ## Feature
 
-* Anrange by DropNDrop
+* Arrange by DropNDrop
 * No sever. No uploading. Only work on your browser.
