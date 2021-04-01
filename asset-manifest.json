@@ -1,13 +1,15 @@
 {
   "files": {
     "main.css": "/severless-pdf-merge/static/css/main.df539657.chunk.css",
-    "main.js": "/severless-pdf-merge/static/js/main.8f716547.chunk.js",
-    "main.js.map": "/severless-pdf-merge/static/js/main.8f716547.chunk.js.map",
+    "main.js": "/severless-pdf-merge/static/js/main.b682e07e.chunk.js",
+    "main.js.map": "/severless-pdf-merge/static/js/main.b682e07e.chunk.js.map",
     "runtime-main.js": "/severless-pdf-merge/static/js/runtime-main.aef2dca3.js",
     "runtime-main.js.map": "/severless-pdf-merge/static/js/runtime-main.aef2dca3.js.map",
     "static/js/2.dc862417.chunk.js": "/severless-pdf-merge/static/js/2.dc862417.chunk.js",
     "static/js/2.dc862417.chunk.js.map": "/severless-pdf-merge/static/js/2.dc862417.chunk.js.map",
     "index.html": "/severless-pdf-merge/index.html",
+    "service-worker.js": "/severless-pdf-merge/service-worker.js",
+    "service-worker.js.map": "/severless-pdf-merge/service-worker.js.map",
     "static/css/main.df539657.chunk.css.map": "/severless-pdf-merge/static/css/main.df539657.chunk.css.map",
     "static/js/2.dc862417.chunk.js.LICENSE.txt": "/severless-pdf-merge/static/js/2.dc862417.chunk.js.LICENSE.txt",
     "static/media/icon.2b1622cc.svg": "/severless-pdf-merge/static/media/icon.2b1622cc.svg"
@@ -16,6 +18,6 @@
     "static/js/runtime-main.aef2dca3.js",
     "static/js/2.dc862417.chunk.js",
     "static/css/main.df539657.chunk.css",
-    "static/js/main.8f716547.chunk.js"
+    "static/js/main.b682e07e.chunk.js"
   ]
 }
