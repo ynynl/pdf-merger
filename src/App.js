@@ -22,6 +22,9 @@ function App() {
     setWorkingList(initSave)
   }, [pdfList])
 
+  const pageCount = workingList.reduce((sum, curr) => (curr.checked) ? sum + curr.pages.length : sum, 0)
+  // const docCount = workingList.reduce((sum, curr) => (curr.checked && curr.page.length) ? sum + 1 : sum)
+
   /**
    * 
    * @param {object} newSate 
@@ -118,7 +121,16 @@ function App() {
         />
       })}
 
-      <Right className='row' handlefile={handlefile} handleSave={handleSave} loaded={!!workingList.length} isLoading={isLoading} isSaving={isSaving} />
+      <Right 
+      className='row' 
+      handlefile={handlefile} 
+      handleSave={handleSave} 
+      loaded={!!workingList.length} 
+      isLoading={isLoading} 
+      isSaving={isSaving} 
+      pageCount={pageCount}
+      // docCount={docCount}
+      />
 
     </div>
   );
