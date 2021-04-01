@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/severless-pdf-merge/static/css/main.dbed6050.chunk.css",
-    "main.js": "/severless-pdf-merge/static/js/main.b682e07e.chunk.js",
-    "main.js.map": "/severless-pdf-merge/static/js/main.b682e07e.chunk.js.map",
-    "runtime-main.js": "/severless-pdf-merge/static/js/runtime-main.aef2dca3.js",
-    "runtime-main.js.map": "/severless-pdf-merge/static/js/runtime-main.aef2dca3.js.map",
-    "static/js/2.dc862417.chunk.js": "/severless-pdf-merge/static/js/2.dc862417.chunk.js",
-    "static/js/2.dc862417.chunk.js.map": "/severless-pdf-merge/static/js/2.dc862417.chunk.js.map",
-    "index.html": "/severless-pdf-merge/index.html",
-    "service-worker.js": "/severless-pdf-merge/service-worker.js",
-    "service-worker.js.map": "/severless-pdf-merge/service-worker.js.map",
-    "static/css/main.dbed6050.chunk.css.map": "/severless-pdf-merge/static/css/main.dbed6050.chunk.css.map",
-    "static/js/2.dc862417.chunk.js.LICENSE.txt": "/severless-pdf-merge/static/js/2.dc862417.chunk.js.LICENSE.txt",
-    "static/media/icon.2b1622cc.svg": "/severless-pdf-merge/static/media/icon.2b1622cc.svg"
+    "main.css": "/pdf-merger/static/css/main.dbed6050.chunk.css",
+    "main.js": "/pdf-merger/static/js/main.3fed5860.chunk.js",
+    "main.js.map": "/pdf-merger/static/js/main.3fed5860.chunk.js.map",
+    "runtime-main.js": "/pdf-merger/static/js/runtime-main.3361c16e.js",
+    "runtime-main.js.map": "/pdf-merger/static/js/runtime-main.3361c16e.js.map",
+    "static/js/2.dc862417.chunk.js": "/pdf-merger/static/js/2.dc862417.chunk.js",
+    "static/js/2.dc862417.chunk.js.map": "/pdf-merger/static/js/2.dc862417.chunk.js.map",
+    "index.html": "/pdf-merger/index.html",
+    "service-worker.js": "/pdf-merger/service-worker.js",
+    "service-worker.js.map": "/pdf-merger/service-worker.js.map",
+    "static/css/main.dbed6050.chunk.css.map": "/pdf-merger/static/css/main.dbed6050.chunk.css.map",
+    "static/js/2.dc862417.chunk.js.LICENSE.txt": "/pdf-merger/static/js/2.dc862417.chunk.js.LICENSE.txt",
+    "static/media/icon.2b1622cc.svg": "/pdf-merger/static/media/icon.2b1622cc.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.aef2dca3.js",
+    "static/js/runtime-main.3361c16e.js",
     "static/js/2.dc862417.chunk.js",
     "static/css/main.dbed6050.chunk.css",
-    "static/js/main.b682e07e.chunk.js"
+    "static/js/main.3fed5860.chunk.js"
   ]
 }
